@@ -165,7 +165,7 @@ nvinfer1::TacticSources GetTacticSourceFromString(std::string& tactic_sting) {
     } else if (t == "EDGE_MASK_CONVOLUTIONS") {
       source = nvinfer1::TacticSource::kEDGE_MASK_CONVOLUTIONS;
     } else if (t == "JIT_CONVOLUTIONS") {
-      source = nvinfer1::TacticSource::kJIT_CONVOLUTIONS;
+      // source = nvinfer1::TacticSource::kJIT_CONVOLUTIONS;
     } else {
       LOGS_DEFAULT(WARNING) << "[TensorRT EP] Tactic source was not found with name: " << t;
     }
@@ -2135,7 +2135,7 @@ common::Status TensorrtExecutionProvider::Compile(const std::vector<FusedNodeAnd
 
     // enable builder heuristics
     if (build_heuristics_enable_) {
-      trt_config->setFlag(nvinfer1::BuilderFlag::kENABLE_TACTIC_HEURISTIC);
+      // trt_config->setFlag(nvinfer1::BuilderFlag::kENABLE_TACTIC_HEURISTIC);
       LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Builder heuristics are enabled";
     }
 #if NV_TENSORRT_MINOR > 5 && NV_TENSORRT_MAJOR >= 8
@@ -2562,7 +2562,7 @@ common::Status TensorrtExecutionProvider::Compile(const std::vector<FusedNodeAnd
 
         // enable builder heuristics
         if (trt_state->build_heuristics_enable) {
-          trt_config->setFlag(nvinfer1::BuilderFlag::kENABLE_TACTIC_HEURISTIC);
+          // trt_config->setFlag(nvinfer1::BuilderFlag::kENABLE_TACTIC_HEURISTIC);
           LOGS_DEFAULT(VERBOSE) << "[TensorRT EP] Builder heuristics are enabled";
         }
 #if NV_TENSORRT_MINOR > 5 && NV_TENSORRT_MAJOR >= 8
