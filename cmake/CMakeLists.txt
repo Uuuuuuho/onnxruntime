@@ -1154,7 +1154,8 @@ if (onnxruntime_USE_TVM)
 
   # TVM
   if (onnxruntime_TVM_USE_LLVM)
-    set(USE_LLVM "${onnxruntime_TVM_USE_LLVM}" CACHE STRING "Path to LLVM for correct TVM build")
+    set(USE_LLVM "/home/fsir/workspace/build-llvm/bin/llvm-config" CACHE STRING "Path to LLVM for correct TVM build" FORCE)
+    # set(USE_LLVM "${onnxruntime_TVM_USE_LLVM}" CACHE STRING "Path to LLVM for correct TVM build")
   elseif(onnxruntime_USE_LLVM)
     set(USE_LLVM ON CACHE BOOL "Only defined for TVM")
   endif()
