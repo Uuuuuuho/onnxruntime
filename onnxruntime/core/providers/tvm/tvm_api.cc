@@ -174,6 +174,7 @@ TvmModule TVMSoCompile(const TvmEPOptions& options) {
   } else {
     arity = 6;
   }
+  uint64_t alloc_type = 2;
   // uint64_t alloc_type = uint64_t(tvm_rt_vm::AllocatorType::kPooled);
   // TODO(vchernov): multiple devices using and using device with specified id are not supported
   // Always use the first device of the specified type.
@@ -183,12 +184,12 @@ TvmModule TVMSoCompile(const TvmEPOptions& options) {
   tvm_rt::TVMArgsSetter setter(init_vals.data(), codes.data());
   setter(0, dev_type);
   setter(1, device_id);
-  // setter(2, alloc_type);
+  setter(2, alloc_type);
   // Also initialize a CPU device context.
   if (dev_type != cpu_type) {
     setter(3, cpu_type);
     setter(4, device_id);
-    // setter(5, alloc_type);
+    setter(5, alloc_type);
   }
   tvm_rt::TVMRetValue rv;
   // Call the packed func with the init arguments.
